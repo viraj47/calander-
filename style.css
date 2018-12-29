@@ -1,0 +1,59 @@
+.event-list{
+	background: grey;
+	grid-row: 1/3;
+}
+body{
+	margin:0;
+	overflow-y: hidden;
+}
+.dates{
+	display: grid;
+	background: #33ffad;
+	grid-template-columns: repeat(7,1fr);
+	grid-auto-rows: 66px;
+	grid-gap: 1em;
+	padding-top: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	grid-column: 2/3;
+}
+.dates > div{
+	border-color: black;
+	border-width: 10px;	
+	background: white;
+	text-align: center;
+	font-size: 40px;
+	box-shadow: 3px 3px 3px 3px rgba(0,1.2,0,0.2);
+	cursor: pointer;
+}
+.grid-container{
+	display: grid;
+	grid-template-columns:  1fr 2fr;
+	grid-auto-rows: minmax(120px,auto);
+}
+.days
+{
+  color: black;
+  position: relative;
+  font-size: 18px;
+  margin-left:60px;
+  margin-top:20px;
+  word-spacing: 80px;
+  font-weight: 600;
+  font-family: Averia Serif Libre;
+}
+.months
+{
+  color: black;
+  position: relative;
+  font-size: 14px;
+  margin-left:30px;
+  margin-top: 60px;
+  word-spacing: 40px;
+  font-weight: 600;
+  font-family: Averia Serif Libre;
+}
+.montharea{
+	background: #33ffad;
+}

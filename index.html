@@ -1,0 +1,152 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href='https://fonts.googleapis.com/css?family=Bitter' rel='stylesheet'>
+</head>
+	<div class="grid-container">
+		<div class="event-list">
+		</div>
+		<div class="montharea">
+				<div class="months"><span class="JAN">JAN</span><span class="FEB"> FEB</span><span class="MAR"> MAR</span><span class="APR"> APR</span><span class="MAY"> MAY</span><span class="JUN"> JUN</span><span class="JUL"> JUL</span><span class="AUG"> AUG</span><span class="SEP"> SEP</span> <span class="OCT"> OCT</span><span class="NOV"> NOV</span><span class="DEC"> DEC</span></div>
+			   <div class="days"><span class="MON"> MON</span><span class="TUE"> TUE</span> <span class="WED"> WED</span> <span class="THU"> THU</span> <span class="FRI"> FRI</span> <span class="SAT"> SAT</span> <span class="SUN"> SUN</span></div>
+		</div> 
+		<div class="dates">
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div> 
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+			<div class="putdate"></div>
+		</div>
+	</div>	
+</html>
+<script>
+	var listOfmonths=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+	var listOfdays=["MON","TUE","WED","THU","FRI","SAT","SUN"];
+	var putdate=document.getElementsByClassName("putdate");
+	var current_day=0;
+	var baseDateobj={};
+	var current_month=0;
+	var j=0;
+	var endMonthflag=0;
+
+ function arrangeCalander(selectedMonth,selectedYear){
+	j=1;
+	endMonthflag=0;
+	console.log(selectedMonth,selectedYear);
+    baseDateobj=new Date(selectedYear,selectedMonth,1);
+    current_month=baseDateobj.getMonth();
+    current_day=baseDateobj.getDay();
+	for(let i=current_day;i<=putdate.length;i++,j++)
+	{
+		if(i==1)
+			i=8;
+		else if(i==0)
+			i=7;
+		putdate[i-1].innerHTML=j;
+		if(endMonthflag==1)
+		{
+			putdate[i-1].style.background="grey";
+			putdate[i-1].style.opacity=0.5;
+			putdate[i-1].style.cursor="default";
+		}
+		if(current_month<=6)
+		{
+			if((current_month==1 && j==28) || (current_month%2==0 && j==31 && current_month!=0) || (current_month%2!=0 && j==30)  || (current_month==0 && j==31))
+			{
+				j=0;	
+			    endMonthflag=1;		
+			}
+		}
+		else
+		{
+			if(current_month==1 && j==28 || current_month%2==0 && j==30 && current_month!=0 || current_month%2!=0 && j==31 || current_month==0 && j==31)
+			{
+				j=0;	
+				endMonthflag=1;	
+			}
+		}	
+	}
+	if(current_month==2)
+		j=28;
+	else if(current_month<=6)
+	{
+		if(current_month%2!=0 || current_month==0)
+			j=31;
+		else
+			j=30;
+	}	
+	else
+	{
+		if(current_month==7)
+			j=31;
+		else if(current_month%2==0)
+			j=31;
+		else
+			j=30;
+	}
+	if(current_day<2)
+	{
+		if(current_day==0)
+			current_day=7;
+		else if(current_day=1)
+			current_day=8;
+	}
+	for(let i=current_day-2;i>=0;i--,j--)
+	{
+		putdate[i].innerHTML=j;
+		putdate[i].style.background="grey";
+		putdate[i].style.opacity=0.5;
+		putdate[i].style.cursor="default";
+	}
+}	
+document.getElementsByClassName("months")[0].addEventListener('click', function (event) {
+			for(let i=0;i<listOfmonths.length;i++)
+			{
+    			if (event.target.classList.contains(listOfmonths[i])) 
+    			{
+       				document.getElementsByClassName(listOfmonths[i])[0].style.color="blue";
+       				arrangeCalander(listOfmonths.indexOf((document.getElementsByClassName(listOfmonths[i])[0].innerHTML).trim()),2018);
+    			}
+    			else
+    				document.getElementsByClassName(listOfmonths[i])[0].style.color="black";
+   			}
+}, false);
+arrangeCalander(8,2018);
+</script>
