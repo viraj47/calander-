@@ -1,0 +1,83 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="calander" content="calander app that lets you store your events">
+  <meta name="keywords" content="HTML,CSS,JavaScript">
+  <meta name="author" content="viraj chavda">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/loginstyle.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<div class="login-page">
+  <div class="form">
+    <form class="register-form">
+      <input id="name" type="text" placeholder="name"/>
+      <input id="rgpassword" type="password" placeholder="password">
+      <input id="rgemail" type="text" placeholder="email address"> 
+      <button id="register">register</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+  <!--<form class="login-form">
+      <input  id="email" type="text" placeholder="email"/>
+      <input id="password" type="password" placeholder="password"/>
+      <button id="login">login</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>-->
+  <form class="login-form" action="/" method="POST">
+      <input  id="email"   name="email"/>
+      <input id="password" name="password"/>
+      <button id="login">login</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+  </div>
+</div>
+</html>
+<script type="text/javascript">
+  $('.message a').click(function(){
+    $("#email").val(null);
+    $("#password").val(null);
+    $("#name").val(null);
+    $("#regpassword").val(null);
+    $("#regemail").val(null);
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+</script>
+<script>
+  var user_name,pass,email;
+    $(document).ready(function(){
+    /*    $("#login").click(function(){
+          email=$("#email").val();
+          pass=$("#password").val();
+          $.post("http://localhost:3000/",{email: email,password: pass}, function(data){
+            console.log(data);
+          });
+        });*/
+
+
+       /* $("#login").click(function(){
+          var xhttp = new XMLHttpRequest();
+          email=$("#email").val();
+          pass=$("#password").val();
+          console.log(email);
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+           }
+          };
+          xhttp.open("POST", "/", true);
+          xhttp.send("email="+email+"&"+"password="+pass); 
+          console.log("send");
+        });*/
+        
+        $("#register").click(function(){
+          user_name=$("#name").val();
+          pass=$("#rgpassword").val();
+          email=$("#rgemail").val();
+          if((user_name && pass && email)!=undefined)
+          {
+           $.post("http://localhost:3000/",{email: email,password: pass,user_name:user_name}, function(data){
+            });
+          }
+        });       
+      });
+</script>

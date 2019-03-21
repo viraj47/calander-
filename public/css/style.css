@@ -1,0 +1,140 @@
+@import url(https://fonts.googleapis.com/css?family=Arvo:700);
+@import url(https://fonts.googleapis.com/css?family=Seaweed+Script);
+.event-list{
+	background:#333333;
+	grid-row: 1/3;
+	z-index: 1;
+}
+body{
+	margin:0;
+	overflow-y: hidden;
+}
+.dates{
+	display: grid;
+	background: #33ffad;
+	grid-template-columns: repeat(7,1fr);
+	grid-auto-rows: 66px;
+	grid-gap: 1em;
+	padding-top: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	grid-column: 2/3;
+}
+.putdate{
+	border-color: black;
+	border-width: 10px;	
+	background: white;
+	text-align: center;
+	font-size: 40px;
+	box-shadow: 3px 3px 3px 3px rgba(.58,.19,0,.91);
+	cursor: pointer;
+	border-radius: 10px;
+	transition: 0.5s;
+}
+.animatecalforward{
+	animation-name: changemonth;
+	animation-duration: 0.8s;
+	animation-iteration-count:1; 
+	animation-direction: normal;
+}
+.animatecalbackward{
+	animation-name: changemonth;
+	animation-duration: 0.5s;
+	animation-iteration-count:1;
+	animation-direction: reverse;
+}
+.grid-container{
+	display: grid;
+	grid-template-columns:  1fr 2fr;
+	grid-auto-rows: minmax(120px,auto);
+}
+.days
+{
+  color: black;
+  position: relative;
+  font-size: 18px;
+  margin-left:60px;
+  margin-top:20px;
+  word-spacing: 80px;
+  font-weight: 600;
+  font-family: Averia Serif Libre;
+}
+.months
+{
+  color: black;
+  position: relative;
+  font-size: 14px;
+  margin-left:30px;
+  margin-top: 60px;
+  word-spacing: 40px;
+  font-weight: 600;
+  font-family: Averia Serif Libre;
+}
+.montharea{
+	display: grid;
+	background: #33ffad;
+}
+.dates >div:hover{
+	transform: scale(1.1,1.1);
+}
+
+body {
+  background-color: #222;
+}
+.plate {
+  width: 380px;
+  margin: 1% auto;
+}
+.shadow {
+  color: #fff;
+  font-family: Arvo;
+  font-weight: bold;
+  text-shadow:
+    -3px -3px 0 #222,
+    3px -3px 0 #222,
+    -3px 3px 0 #222,
+    3px 3px 0 #222,
+    4px 4px 0 #fff,
+    5px 5px 0 #fff,
+    6px 6px 0 #fff,
+    7px 7px 0 #fff;
+  line-height: 0.8em;
+  letter-spacing: 0.2em;
+  transform: scaleY(0.7);
+  -webkit-transform: scaleY(0.7);
+  -moz-transform: scaleY(0.7);
+  margin:0;
+  text-align: center;
+}
+.script {
+  font-family: "Seaweed Script";
+  color: #fff;
+  text-align: center;
+  font-size: 30px;
+  position: relative;
+  margin:0;
+}
+.script span {
+  background-color: #222122;
+  padding: 0 1em;
+  transition: 2s;
+}
+
+.script:before {
+  content:"";
+  display: block;
+  position: absolute;
+  z-index:-1;
+  top: 50%;
+  width: 100%;
+  border-bottom: 3px solid #fff;
+}
+
+.text2 {
+  font-size: 120px;
+}
+@keyframes changemonth{
+	from{transform: translate(-1000px);}
+	to{transform: translate(0px);}
+}

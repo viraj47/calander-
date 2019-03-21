@@ -1,0 +1,57 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/loginstyle.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<div class="login-page">
+  <div class="form">
+    <form class="register-form">
+      <input id="name" type="text" placeholder="name"/>
+      <input id="rgpassword" type="password" placeholder="password">
+      <input id="rgemail" type="text" placeholder="email address"> 
+      <button id="register">register</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+    <form class="login-form">
+      <input  id="email" type="text" placeholder="email"/>
+      <input id="password" type="password" placeholder="password"/>
+      <button id="login">login</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+  </div>
+</div>
+</html>
+<script type="text/javascript">
+  $('.message a').click(function(){
+    $("#email").val(null);
+    $("#password").val(null);
+    $("#name").val(null);
+    $("#regpassword").val(null);
+    $("#regemail").val(null);
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+</script>
+<script>
+  var user_name,pass,email;
+    $(document).ready(function(){
+        $("#login").click(function(){
+          console.log("hi");
+          email=$("#email").val();
+          pass=$("#password").val();
+          $.post("http://localhost:3000",{email: email,password: pass}, function(data){
+          });
+        });
+       
+        $("#register").click(function(){
+          user_name=$("#name").val();
+          pass=$("#rgpassword").val();
+          email=$("#rgemail").val();
+          console.log(pass);
+          if((user_name && pass && email)!=undefined)
+          {
+           $.post("http://localhost:3000",{email: email,password: pass,user_name:user_name}, function(data){
+            });
+          }
+        });       
+      });
+</script>
