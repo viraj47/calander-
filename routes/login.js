@@ -11,7 +11,7 @@ var userEntry=require('../database/userDataSchema');
 var app = express();
 
 //initialize session
-/*app.use(session({secret: 'gcet sucks'}));
+/*
 
 var sess;
 app.get('/',function(req,res){
